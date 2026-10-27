@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools==84.2.0", "wheel==0.48.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "latent-state-lab"
+version = "1.1.0"
+description = "Exact local snapshot reconciliation, resumable feeds and restoration research fixtures."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+license = "MIT"
+license-files = ["LICENSE"]
+
+[project.scripts]
+latent-state-lab = "latent_state_lab.demo:main"
+latent-state-batch = "latent_state_lab.batch:main"
+latent-state-inspect = "latent_state_lab.inspect:main"
+latent-state-sync = "latent_state_lab.sync:main"
+latent-state-patch = "latent_state_lab.patch:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+
+[tool.ruff.lint]
+extend-select = ["E4", "E7", "E9", "F"]

@@ -1,0 +1,48 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: '0.13.1'
+          enable-cache: false
+      - run: uv venv --python ${{ matrix.python-version }}
+      - run: uv pip install --python .venv/bin/python -r requirements-dev.txt .
+      - run: uv run --no-project --python .venv/bin/python ruff check --config pyproject.toml src tests scripts examples
+      - run: uv run --no-project --python .venv/bin/python python -m unittest discover -s tests -v
+      - run: uv run --no-project --python .venv/bin/python python scripts/verify_release.py
+  tensor:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: '0.13.1'
+          enable-cache: false
+      - run: uv venv --python 3.13
+      - run: uv pip install --python .venv/bin/python torch==2.13.0 --index-url https://download.pytorch.org/whl/cpu
+      - run: uv pip install --python .venv/bin/python -r requirements-tensor-probe.txt .
+      - run: uv run --no-project --python .venv/bin/python python -m unittest discover -s tests -v
+      - run: uv run --no-project --python .venv/bin/python python scripts/verify_tensor.py

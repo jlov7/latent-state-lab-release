@@ -1,0 +1,4 @@
+# Build/verification tooling. Runtime has no required third-party dependencies.
+setuptools==84.2.0
+wheel==0.48.0
+packaging==26.3

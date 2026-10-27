@@ -1,0 +1,13 @@
+include CITATION.cff
+include README.md CONTRIBUTING.md SECURITY.md LICENSE pyproject.toml MANIFEST.in
+include requirements-build.txt requirements-tensor-probe.txt requirements-dev.txt
+include docs/USAGE.md docs/DESIGN.md docs/EVALUATION.md docs/LIMITATIONS.md docs/REFERENCES.md
+include docs/VALIDATION.md
+include docs/STABILITY.md docs/RELEASING.md docs/images/workflow.svg
+recursive-include src/latent_state_lab *.py
+recursive-include tests test_*.py
+recursive-include examples *.py
+recursive-include scripts *.py
+exclude LICENSE-STATUS.md STATUS.md AGENTS.md
+prune .release-scratch
+global-exclude __pycache__ *.py[cod] .DS_Store

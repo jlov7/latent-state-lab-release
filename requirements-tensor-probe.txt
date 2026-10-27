@@ -1,0 +1,6 @@
+# Optional numerical probe. Install CPU torch separately using the documented command.
+torch==2.13.0
+safetensors==0.7.0
+# Explicit runtime imports: safetensors.torch uses packaging; signatures use NumPy.
+packaging==25.0
+numpy==2.3.5

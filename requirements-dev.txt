@@ -1,0 +1,2 @@
+# Reproducible lint tooling; not a runtime dependency.
+ruff==0.17.1

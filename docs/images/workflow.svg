@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="530" viewBox="0 0 1080 530" role="img" aria-labelledby="title desc">
+<title id="title">Choose the aggregation workflow from the meaning of your input</title>
+<desc id="desc">A complete snapshot and before-after correction patch both preview exact changes and require explicit apply to private selected state. An immutable or append-only feed saves aggregate progress and resumes from the committed prefix. Missing snapshot IDs are deletions; patch conflicts refuse the whole batch; append feeds cannot edit committed history.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#426377"/></marker></defs>
+<rect width="1080" height="530" rx="16" fill="#f7fafc"/>
+<g font-family="system-ui, sans-serif" fill="#162d3b">
+<text x="40" y="45" font-size="25" font-weight="700">What does your input mean?</text>
+<text x="40" y="75" font-size="16">CSV / JSONL files on a trusted local POSIX filesystem</text>
+<g stroke="#426377" stroke-width="2" fill="#fff">
+<rect x="40" y="110" width="290" height="130" rx="10"/>
+<rect x="395" y="110" width="290" height="130" rx="10"/>
+<rect x="750" y="110" width="290" height="130" rx="10"/>
+<rect x="135" y="310" width="455" height="105" rx="10" fill="#e6f3ed"/>
+<rect x="750" y="310" width="290" height="105" rx="10" fill="#e7eff8"/>
+</g>
+<text x="60" y="142" font-size="20" font-weight="650">Complete replacement</text>
+<text x="60" y="171" font-size="17">latent-state-sync</text>
+<text x="60" y="200" font-size="15">Stable IDs; omitted ID = deletion</text>
+<text x="60" y="222" font-size="15">Read the whole incoming export</text>
+<text x="415" y="142" font-size="20" font-weight="650">Changed IDs only</text>
+<text x="415" y="171" font-size="17">latent-state-patch</text>
+<text x="415" y="200" font-size="15">Explicit before / after values</text>
+<text x="415" y="222" font-size="15">Any conflict refuses all changes</text>
+<text x="770" y="142" font-size="20" font-weight="650">Immutable / append feed</text>
+<text x="770" y="171" font-size="17">latent-state-batch</text>
+<text x="770" y="200" font-size="15">No committed-history edits</text>
+<text x="770" y="222" font-size="15">No live concurrent source writer</text>
+<g stroke="#426377" stroke-width="2" fill="none" marker-end="url(#arrow)">
+<path d="M185 240 V275 H290 V305"/><path d="M540 240 V275 H445 V305"/><path d="M895 240 V305"/>
+</g>
+<text x="156" y="341" font-size="19" font-weight="650">Preview exact changes, then apply</text>
+<text x="156" y="369" font-size="16">review_sha256 guards bytes + prior state + config</text>
+<text x="156" y="394" font-size="16">Atomic replacement of private selected state</text>
+<text x="770" y="341" font-size="19" font-weight="650">Checkpoint and resume</text>
+<text x="770" y="369" font-size="16">Exact aggregates + byte progress</text>
+<text x="770" y="394" font-size="16">Validate the committed prefix</text>
+<text x="40" y="465" font-size="17" font-weight="650">Exact arithmetic. Bounded state. Explicit recovery.</text>
+<text x="40" y="493" font-size="16">Full integrity/state I/O remains. No speed, exactly-once external-effect or real-model restoration claim.</text>
+</g></svg>
